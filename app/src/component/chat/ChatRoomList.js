@@ -1,6 +1,16 @@
 import './ChatRoomList.css'
+import useFetch from "../util/useFetch";
 
 function ChatRoomList() {
+
+    const { loading, data: rooms, error } = useFetch(
+        'http://localhost:8080/chat/rooms'        
+      );
+
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error!</p>;
+
+
     return (
         <section>
             <div>
@@ -10,15 +20,13 @@ function ChatRoomList() {
 
             <div>
                 <ul>
-                    <li>채팅방 1</li>
-                    <li>채팅방 2</li>
-                    <li>채팅방 3</li>
-                    <li>채팅방 4</li>
+                    {
+                        rooms.map(({roomId, name}) => (
+                            <li key={roomId}>{name}</li>
+                        ))
+                    }                    
                 </ul>
             </div>
-            
-        
-            
         </section>
     );
 }
