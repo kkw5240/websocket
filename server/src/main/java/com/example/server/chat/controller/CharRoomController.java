@@ -31,7 +31,7 @@ public class CharRoomController {
     }
 
     @GetMapping("/rooms/{roomId}")
-    public ChatRoom searchRoom(@RequestParam String name) {
-        return chatRoomRepo.findRoomById(name);
+    public ChatRoom searchRoomInfo(@RequestParam String roomId) {
+        return chatRoomRepo.findRoomById(roomId);
     }
 }
