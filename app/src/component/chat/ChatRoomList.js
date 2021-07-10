@@ -1,13 +1,17 @@
-import { useState, useEffect } from "react";
-
 import './ChatRoomList.css'
+import { useState, useEffect } from "react";
+import { useDispatch } from 'react-redux'
+
+import { update } from '../../app/chatRoomMng'
 
 function ChatRoomList() {
     const [loading, setLoading] = useState(true);
     const [roomList, setRoomList] = useState(null);
     const [error, setError] = useState(null);
 
-    const [searchKey, setSearchKey] = useState();
+    const [searchKey, setSearchKey] = useState('');
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
         searchRoomList();
@@ -57,6 +61,10 @@ function ChatRoomList() {
         });
     }
 
+    function joinChatRoom(roomId, roomName) {
+        dispatch(update({roomId : roomId, roomName : roomName}));
+    }
+
     return (
         <section>
             <div>
@@ -68,7 +76,7 @@ function ChatRoomList() {
                 <ul>
                     {
                         roomList.map(({roomId, name}) => (
-                            <li key={roomId}>{name}</li>
+                            <li key={roomId} onClick={() => joinChatRoom(roomId, name)}>{name}</li>
                         ))
                     }                    
                 </ul>

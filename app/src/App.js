@@ -3,6 +3,7 @@ import Header from './component/header/Header.js'
 import Footer from './component/footer/Footer.js'
 import Nav from './component/nav/Nav.js'
 import ChatRoomList from './component/chat/ChatRoomList.js'
+import ChatContent from './component/chat/ChatContent.js'
 
 function App() {
   return (
@@ -15,8 +16,7 @@ function App() {
 
         <section className="content">
           <article>
-            <h1>제목</h1>
-            <p>본문</p>
+            <ChatContent />
           </article>
 
         </section>

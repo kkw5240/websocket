@@ -15,10 +15,13 @@ public class ChatController {
 
     @MessageMapping("/chat/message")
     public void message(ChatMessage chatMessage) {
+        System.out.println(chatMessage.getRoomId());
+        System.out.println(chatMessage.getMessage());
+        System.out.println(chatMessage.getSender());
         if(MessageType.JOIN.equals(chatMessage.getMessageType())) {
             chatMessage.setMessage(chatMessage.getSender() + " 입장 ~~~~");
         }
 
-        messagingTemplate.convertAndSend("/sub/char/room/" + chatMessage.getRoomId(), chatMessage);
+        messagingTemplate.convertAndSend("/sub/chat/room/" + chatMessage.getRoomId(), chatMessage);
     }
 }

@@ -8,15 +8,7 @@ import java.util.*;
 
 @Repository
 public class ChatRoomMapRepo implements IChatRoomRepo {
-    private Map<String, ChatRoom> chatRoomMap;
-
-    //@PostConstruct
-    //private void init() {
-    //    chatRoomMap = new LinkedHashMap<>();
-    //}
-    public ChatRoomMapRepo() {
-        chatRoomMap = new LinkedHashMap<>();
-    }
+    private Map<String, ChatRoom> chatRoomMap = new LinkedHashMap<>();
 
     @Override
     public List<ChatRoom> findAllRoom() {
